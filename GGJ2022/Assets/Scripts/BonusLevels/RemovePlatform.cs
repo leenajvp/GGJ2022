@@ -6,7 +6,7 @@ using BonusLevel;
 public class RemovePlatform : MonoBehaviour
 {
     [SerializeField] private SwapCharacter player;
-    [SerializeField] private bool isHot;
+    [SerializeField] private bool hot;
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class RemovePlatform : MonoBehaviour
     private void CheckPlayerMode()
     {
         //If platform is hot and player is cube stop movement
-        if (isHot)
+        if (hot)
         {
             if (player.isBall)
                 StartCoroutine(Timer());
