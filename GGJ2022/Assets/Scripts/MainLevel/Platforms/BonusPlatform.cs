@@ -1,5 +1,4 @@
-using System;
-using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MainLevel.Platforms
 {
@@ -12,7 +11,7 @@ namespace MainLevel.Platforms
 
         public void LoadBonusLevel()
         {
-            // Load bonus level
+            SceneManager.LoadScene("Bonus");
         }
     }
 }

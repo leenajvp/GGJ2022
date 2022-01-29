@@ -9,7 +9,8 @@ namespace MainLevel
     [RequireComponent(typeof(CircleCollider2D), typeof(BoxCollider2D))]
     public class PlayerControls : MonoBehaviour
     {
-        [SerializeField] private Transform start;
+        [SerializeField] private Transform startPos;
+        [SerializeField] private bool startState;
         private Vector3 scale;
         
         [Header("Duality")]
@@ -45,8 +46,8 @@ namespace MainLevel
             if (!circleCol) circleCol = GetComponent<CircleCollider2D>();
             if (!squareCol) squareCol = GetComponent<BoxCollider2D>();
 
-            if (start) transform.position = start.position;
-            ChangeState(false);
+            if (startPos) transform.position = startPos.position;
+            ChangeState(startState);
             gameObject.SetActive(true);
             scale = transform.localScale;
         }
