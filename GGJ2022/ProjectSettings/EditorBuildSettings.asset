@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1Lights.unity
     guid: 8a8bc050d0516984a890ab0eadf95049
   - enabled: 1
-    path: Assets/Scenes/ExtraLevel1.unity
+    path: Assets/Scenes/Bonus.unity
     guid: 7622a06c298328645939de23fcc27871
   m_configObjects: {}

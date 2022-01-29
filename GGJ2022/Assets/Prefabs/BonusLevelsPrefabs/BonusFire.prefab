@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1820298342572174173}
   - component: {fileID: 1820298342572174162}
   m_Layer: 0
-  m_Name: firePlatform
+  m_Name: BonusFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
