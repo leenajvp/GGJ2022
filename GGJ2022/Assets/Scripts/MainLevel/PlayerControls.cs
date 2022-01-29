@@ -10,6 +10,7 @@ namespace MainLevel
     public class PlayerControls : MonoBehaviour
     {
         [SerializeField] private Transform start;
+        private Vector3 scale;
         
         [Header("Duality")]
         [SerializeField] private SpriteRenderer sr;
@@ -22,7 +23,7 @@ namespace MainLevel
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private LayerMask groundLayer;
         private bool onMovingPlat, onIcePlat, onHotPlat;
-        public bool grounded;
+        private bool grounded;
 
         [Header("Circle Behaviour")]
         [SerializeField] private CircleCollider2D circleCol;
@@ -47,6 +48,7 @@ namespace MainLevel
             if (start) transform.position = start.position;
             ChangeState(false);
             gameObject.SetActive(true);
+            scale = transform.localScale;
         }
 
         private void Update()
@@ -210,6 +212,10 @@ namespace MainLevel
                 case Platform.Type.Ice:
                     IcePlatform icePlatform = other.gameObject.GetComponent<IcePlatform>();
                     if (!state) icePlatform.Melt();
+                    break;
+                
+                case Platform.Type.Moving:
+                    scale = scale;
                     break;
             }
         }
