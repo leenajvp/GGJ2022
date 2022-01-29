@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace MainLevel
+namespace MainLevel.Platforms
 {
-    public class MovingPlatform : MonoBehaviour
+    public class MovingPlatform : Platform
     {
         [SerializeField] private float speed;
         [SerializeField] private Vector2 pointA, pointB;
@@ -23,6 +23,7 @@ namespace MainLevel
 
         private void Start()
         {
+            type = Type.Moving;
             transform.position = pointA;
         }
 

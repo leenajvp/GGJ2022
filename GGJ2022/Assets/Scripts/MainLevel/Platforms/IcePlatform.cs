@@ -1,16 +1,16 @@
-using System;
 using UnityEngine;
 
-namespace MainLevel
+namespace MainLevel.Platforms
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class IcePlatform : MonoBehaviour
+    public class IcePlatform : Platform
     {
         [SerializeField] private SpriteRenderer sr;
         [SerializeField] private float meltSpeed;
 
         private void Start()
         {
+            type = Type.Ice;
             if (!sr) sr = GetComponent<SpriteRenderer>();
         }
 
