@@ -9,19 +9,6 @@ namespace MainLevel.Platforms
         [SerializeField] private Vector2 pointA, pointB;
         [SerializeField] private bool pingPong;
         [SerializeField] private bool canMove;
-        [SerializeField] private GameObject playerHolder;
-
-        public bool CanMove
-        {
-            get => canMove;
-            set => canMove = value;
-        }
-
-        public GameObject PlayerHolder
-        {
-            get => playerHolder;
-            set => playerHolder = value;
-        }
 
         private void Start()
         {
