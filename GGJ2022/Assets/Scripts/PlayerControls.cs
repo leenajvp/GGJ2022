@@ -1,4 +1,6 @@
 using System;
+using System.Security;
+using TreeEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D))]
@@ -12,17 +14,23 @@ public class PlayerControls : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private bool onMovePlat;
+
+    [Header("Circle Behaviour")]
     [SerializeField] private CircleCollider2D circleCol;
-    [SerializeField] private BoxCollider2D boxCol;
-    [SerializeField] private float currentSpeed, circleSpeed, squareSpeed;
-    [SerializeField] private float acceleration;
+    private Vector2 rollDir;
+    
+    [Header("Square Behaviour")]
+    [SerializeField] private BoxCollider2D squareCol;
+    [SerializeField] private bool slide;
+    
 
     private void Start()
     {
         if (!sr) sr = GetComponent<SpriteRenderer>();
         if (!rb) rb = GetComponent<Rigidbody2D>();
         if (!circleCol) circleCol = GetComponent<CircleCollider2D>();
-        if (!boxCol) boxCol = GetComponent<BoxCollider2D>();
+        if (!squareCol) squareCol = GetComponent<BoxCollider2D>();
         
         ChangeState(false);
     }
@@ -37,73 +45,101 @@ public class PlayerControls : MonoBehaviour
     {
         switch (state)
         {
-            // Circle
             case false:
                 CircleBehaviour();
                 break;
             
-            // Square
             case true:
                 SquareBehaviour();
                 break;
         }
     }
 
+    // Toggle state
     private void ChangeState()
     {
         state = !state;
+        sr.sprite = state ? squareSprite : circleSprite;
 
+        // Circle
         if (!state)
         {
-            sr.sprite = circleSprite;
+            rb.constraints = RigidbodyConstraints2D.None;
             circleCol.enabled = true;
-            boxCol.enabled = false;
-            rb.simulated = true;
+            squareCol.enabled = false;
+            rb.velocity = rollDir;
         }
+        // Square
         else
         {
-            sr.sprite = squareSprite;
-            boxCol.enabled = true;
+            squareCol.enabled = true;
             circleCol.enabled = false;
         }
     }
 
+    // Set specific state
     private void ChangeState(bool newState)
     {
         state = newState;
+        sr.sprite = state ? squareSprite : circleSprite;
 
+        // Circle
         if (!state)
         {
-            sr.sprite = circleSprite;
+            rb.constraints = RigidbodyConstraints2D.None;
             circleCol.enabled = true;
-            boxCol.enabled = false;
-            rb.simulated = true;
+            squareCol.enabled = false;
+            rb.velocity = rollDir;
         }
+        // Square
         else
         {
-            sr.sprite = squareSprite;
-            boxCol.enabled = true;
+            squareCol.enabled = true;
             circleCol.enabled = false;
         }
     }
 
     private void CircleBehaviour()
     {
-        if (currentSpeed <= circleSpeed)
-            currentSpeed += acceleration * Time.deltaTime;
-        
-        rb.velocity = new Vector2(0, -currentSpeed);
+        rollDir = rb.velocity.x > 0 ? Vector2.right : Vector2.left ;
     }
 
     private void SquareBehaviour()
     {
-        if (currentSpeed >= squareSpeed)
-            currentSpeed -= acceleration * Time.deltaTime;
+        if (onMovePlat) return;
         
-        // Completely stop square when slowed down
-        if (currentSpeed <= squareSpeed)
-            rb.simulated = false;
+        transform.eulerAngles = new Vector3(0, 0, (rollDir == Vector2.right ? -10 : 10));
+        rb.constraints = slide ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezePositionX;
+    }
+
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.rotation.z < 0) rollDir = Vector2.right;
+        else if (other.transform.rotation.z > 0) rollDir = Vector2.left;
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        MovingPlatform platform = other.gameObject.GetComponent<MovingPlatform>();
+        if (!platform) return;
+        if (!state)
+        {
+            transform.SetParent(null);
+            return;
+        }
         
-        rb.velocity = new Vector2(0, -currentSpeed);
+        platform.CanMove = true;
+        onMovePlat = true;
+        transform.SetParent(platform.PlayerHolder.transform);
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        MovingPlatform platform = other.gameObject.GetComponent<MovingPlatform>();
+        if (!platform) return;
+
+        platform.CanMove = false;
+        onMovePlat = false;
     }
 }
