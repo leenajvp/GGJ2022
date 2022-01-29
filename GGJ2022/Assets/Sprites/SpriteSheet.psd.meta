@@ -10,28 +10,31 @@ TextureImporter:
     second: ball
   - first:
       213: -3459558614108198297
-    second: ice2
+    second: ice
   - first:
       213: 659797372610145418
-    second: platform
+    second: gRing
   - first:
       213: -689520407193891599
-    second: ice1
+    second: yRing
   - first:
       213: 160890277334083914
-    second: spikes
+    second: nPlatfomr
   - first:
       213: 1026407549584056185
-    second: greencollectable
+    second: ice2
   - first:
       213: -3086720242725003937
-    second: star
+    second: ice
   - first:
       213: -4556197565260342421
-    second: GoalRing
+    second: spikes
   - first:
       213: -2764029711273647405
-    second: bonusRing
+    second: greenBall
+  - first:
+      213: -5540648042656198855
+    second: hPlatform
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -62,7 +65,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -161,11 +164,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1531
-        width: 600
-        height: 575
+        y: 838
+        width: 328
+        height: 312
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,12 +184,12 @@ TextureImporter:
       name: ball
       rect:
         serializedVersion: 2
-        x: 717
-        y: 1498
-        width: 630
-        height: 617
+        x: 395
+        y: 819
+        width: 340
+        height: 337
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,16 +202,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ice2
+      name: star
       rect:
         serializedVersion: 2
-        x: 1936
-        y: 784
-        width: 809
-        height: 487
+        x: 830
+        y: 900
+        width: 190
+        height: 195
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 243, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -220,15 +223,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: platform
+      name: gRing
       rect:
         serializedVersion: 2
-        x: 21
-        y: 997
-        width: 809
-        height: 268
+        x: 1076
+        y: 964
+        width: 407
+        height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -241,16 +244,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ice1
+      name: yRing
       rect:
         serializedVersion: 2
-        x: 1020
-        y: 656
-        width: 808
-        height: 614
+        x: 1116
+        y: 792
+        width: 320
+        height: 99
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 371, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -262,15 +265,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spikes
+      name: nPlatfomr
       rect:
         serializedVersion: 2
-        x: 45
-        y: 0
-        width: 809
-        height: 471
+        x: 12
+        y: 545
+        width: 441
+        height: 145
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,15 +286,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greencollectable
+      name: ice2
       rect:
         serializedVersion: 2
-        x: 1173
-        y: 0
-        width: 456
-        height: 447
+        x: 557
+        y: 364
+        width: 441
+        height: 329
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -304,15 +307,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: star
+      name: ice
       rect:
         serializedVersion: 2
-        x: 1515
-        y: 1641
-        width: 354
-        height: 366
+        x: 1059
+        y: 433
+        width: 440
+        height: 257
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -325,15 +328,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoalRing
+      name: spikes
       rect:
         serializedVersion: 2
-        x: 1956
-        y: 1755
-        width: 762
-        height: 252
+        x: 25
+        y: 0
+        width: 442
+        height: 257
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -346,15 +349,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bonusRing
+      name: greenBall
       rect:
         serializedVersion: 2
-        x: 2034
-        y: 1442
-        width: 599
-        height: 186
+        x: 647
+        y: 0
+        width: 243
+        height: 244
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -362,6 +365,27 @@ TextureImporter:
       bones: []
       spriteID: 3d2a8ee3f9134a9d0800000000000000
       internalID: -2764029711273647405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hPlatform
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 61
+        width: 442
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93f8308f5f9ab13b0800000000000000
+      internalID: -5540648042656198855
       vertices: []
       indices: 
       edges: []

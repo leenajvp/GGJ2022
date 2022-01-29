@@ -4,13 +4,40 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -1297291043412680702
-    second: lift10
+    second: back
   - first:
       213: -5165974395039082441
-    second: lift-10
+    second: rbutton
   - first:
       213: -2208440651400835920
-    second: shine
+    second: gbutton
+  - first:
+      213: -8091934977359079599
+    second: ybutton
+  - first:
+      213: 7091651258457364510
+    second: Spritesheet2_4
+  - first:
+      213: -4694893650235666980
+    second: bbutton
+  - first:
+      213: 3859583210052734380
+    second: Spritesheet2_6
+  - first:
+      213: 7189705395059291497
+    second: setting1
+  - first:
+      213: 5761643246960107800
+    second: wrench
+  - first:
+      213: -4407243916260846523
+    second: x
+  - first:
+      213: 3163571314092112451
+    second: info
+  - first:
+      213: 9172541465896140817
+    second: redX
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -136,13 +163,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lift10
+      name: back
       rect:
         serializedVersion: 2
-        x: 66
-        y: 3046
-        width: 829
-        height: 389
+        x: 6
+        y: 1016
+        width: 1179
+        height: 1737
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,13 +184,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lift-10
+      name: rbutton
       rect:
         serializedVersion: 2
-        x: 66
-        y: 2514
-        width: 829
-        height: 388
+        x: 0
+        y: 480
+        width: 483
+        height: 217
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,13 +205,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shine
+      name: gbutton
       rect:
         serializedVersion: 2
-        x: 108
-        y: 1405
-        width: 475
-        height: 451
+        x: 11
+        y: 757
+        width: 477
+        height: 216
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,6 +221,195 @@ TextureImporter:
       bones: []
       spriteID: 0bc88b9adea0a51e0800000000000000
       internalID: -2208440651400835920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ybutton
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 754
+        width: 476
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15714f0d20ca3bf80800000000000000
+      internalID: -8091934977359079599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet2_4
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 486
+        width: 380
+        height: 195
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e189d431f3b9a6260800000000000000
+      internalID: 7091651258457364510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bbutton
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 482
+        width: 476
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdd4777891368deb0800000000000000
+      internalID: -4694893650235666980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet2_6
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 22
+        width: 766
+        height: 380
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad41480b7eff8530800000000000000
+      internalID: 3859583210052734380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: setting1
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 232
+        width: 229
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 0, z: 0, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 965f730d6f6f6c360800000000000000
+      internalID: 7189705395059291497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wrench
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 234
+        width: 224
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 811e591b10875ff40800000000000000
+      internalID: 5761643246960107800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 8
+        width: 228
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54455cc320356d2c0800000000000000
+      internalID: -4407243916260846523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: info
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 9
+        width: 217
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34a731e495347eb20800000000000000
+      internalID: 3163571314092112451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redX
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 746
+        width: 225
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 110c7427dd96b4f70800000000000000
+      internalID: 9172541465896140817
       vertices: []
       indices: 
       edges: []
