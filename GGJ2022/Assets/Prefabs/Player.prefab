@@ -52,10 +52,17 @@ MonoBehaviour:
   circleSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   squareSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   rb: {fileID: 3209972229671143418}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  grounded: 0
   circleCol: {fileID: 6153581336167977247}
+  coldCircle: {fileID: 21300000, guid: e41cdba76b4c6b8459f0968d0f434e2e, type: 3}
   squareCol: {fileID: 610429906}
+  hotSquare: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   slide: 1
   iceSlideSpeed: 1
+  meltSpeed: 1
 --- !u!212 &5850486429916772231
 SpriteRenderer:
   m_ObjectHideFlags: 0

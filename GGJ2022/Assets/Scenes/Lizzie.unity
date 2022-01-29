@@ -898,9 +898,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1526908834}
     - target: {fileID: 5850486429916772229, guid: 5721c212c36aab6408a9b26fc1fe39be, type: 3}
+      propertyPath: hotSquare
+      value: 
+      objectReference: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5850486429916772229, guid: 5721c212c36aab6408a9b26fc1fe39be, type: 3}
       propertyPath: meltSpeed
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5850486429916772229, guid: 5721c212c36aab6408a9b26fc1fe39be, type: 3}
+      propertyPath: coldCircle
+      value: 
+      objectReference: {fileID: 21300000, guid: e41cdba76b4c6b8459f0968d0f434e2e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5721c212c36aab6408a9b26fc1fe39be, type: 3}
 --- !u!1001 &5877047136792805458

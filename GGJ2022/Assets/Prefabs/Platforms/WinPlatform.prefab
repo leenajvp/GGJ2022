@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1863809106637851789}
   - component: {fileID: 5743705518894685803}
   - component: {fileID: 8225360018175491146}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WinPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7327372486912544488}
   - component: {fileID: 8651492727609872608}
   - component: {fileID: 5009025520078697153}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BonusPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

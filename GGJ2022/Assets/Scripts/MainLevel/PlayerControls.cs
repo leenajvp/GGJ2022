@@ -16,16 +16,22 @@ namespace MainLevel
         [SerializeField] private Sprite circleSprite, squareSprite;
         private bool state;
 
+        public bool State => state;
+
         [Header("Movement")]
         [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private LayerMask groundLayer;
         private bool onMovingPlat, onIcePlat, onHotPlat;
+        public bool grounded;
 
         [Header("Circle Behaviour")]
         [SerializeField] private CircleCollider2D circleCol;
-        private Vector2 rollDir;
+        [SerializeField] private Sprite coldCircle;
+        private Vector2 rollDir = Vector2.right;
     
         [Header("Square Behaviour")]
         [SerializeField] private BoxCollider2D squareCol;
+        [SerializeField] private Sprite hotSquare;
         [SerializeField] private bool slide;
         [SerializeField] private float iceSlideSpeed;
         [SerializeField] private float meltSpeed;
@@ -51,13 +57,17 @@ namespace MainLevel
 
         private void FixedUpdate()
         {
+            Debug.DrawRay(transform.position, Vector3.down, Color.green);
+            
             switch (state)
             {
                 case false:
+                    grounded = Physics2D.Raycast(transform.position, Vector2.down, circleCol.bounds.extents.y + 0.1f, groundLayer);
                     CircleBehaviour();
                     break;
             
                 case true:
+                    grounded = Physics2D.Raycast(transform.position, Vector2.down, squareCol.bounds.extents.y + 0.1f, groundLayer);
                     SquareBehaviour();
                     break;
             }
@@ -130,27 +140,64 @@ namespace MainLevel
 
             if (onHotPlat)
             {
-                Color colour = sr.material.color;
+                var material = sr.material;
+                Color colour = material.color;
                 float fade = colour.a - (meltSpeed * Time.deltaTime);
             
                 colour = new Color(colour.r, colour.g, colour.b, fade);
-                sr.material.color = colour;
+                material.color = colour;
             
                 if (colour.a <= 0)
                     RestartLevel();
             }
         
             transform.eulerAngles = new Vector3(0, 0, (rollDir == Vector2.right ? -10 : 10));
-            rb.constraints = slide ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezePositionX;
+            if (grounded)
+                rb.constraints = slide ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezePositionX;
+            else if (!grounded)
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX;
         }
 
     
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (!state) return;
-            
             if (other.transform.rotation.z < 0) rollDir = Vector2.right;
             else if (other.transform.rotation.z > 0) rollDir = Vector2.left;
+            
+            var platform = other.gameObject.GetComponent<Platform>();
+            if (!platform) return;
+
+            switch (platform.ThisType)
+            {
+                case Platform.Type.Ice:
+                    onIcePlat = true;
+                    sr.sprite = !state ? coldCircle : squareSprite;
+                    break;
+                
+                case Platform.Type.Hot:
+                    onHotPlat = true;
+                    sr.sprite = !state ? circleSprite : hotSquare;
+                    break;
+                
+                case Platform.Type.Moving:
+                    onMovingPlat = true;
+                    break;
+                
+                case Platform.Type.Spike:
+                    RestartLevel();
+                    break;
+                
+                case Platform.Type.Bonus:
+                    other.gameObject.GetComponent<BonusPlatform>().LoadBonusLevel();
+                    break;
+                
+                case Platform.Type.Win:
+                    other.gameObject.GetComponent<WinPlatform>().EndLevel();
+                    break;
+                
+                default:
+                    break;
+            }
         }
 
         private void OnCollisionStay2D(Collision2D other)
@@ -163,41 +210,7 @@ namespace MainLevel
                 case Platform.Type.Ice:
                     IcePlatform icePlatform = other.gameObject.GetComponent<IcePlatform>();
                     if (!state) icePlatform.Melt();
-                    else onIcePlat = true;
                     break;
-                
-                case Platform.Type.Hot:
-                    onHotPlat = true;
-                    break;
-                
-                case Platform.Type.Moving:
-                    MovingPlatform movingPlatform = other.gameObject.GetComponent<MovingPlatform>();
-                    if (!state)
-                    {
-                        transform.SetParent(null);
-                        return;
-                    }
-                    onMovingPlat = true;
-                    movingPlatform.CanMove = true;
-                    transform.SetParent(movingPlatform.PlayerHolder.transform);
-                    break;
-                
-                case Platform.Type.Spike:
-                    RestartLevel();
-                    break;
-                
-                case Platform.Type.Bonus:
-                    BonusPlatform bonusPlatform = other.gameObject.GetComponent<BonusPlatform>();
-                    bonusPlatform.LoadBonusLevel();
-                    break;
-                
-                case Platform.Type.Win:
-                    WinPlatform winPlatform = other.gameObject.GetComponent<WinPlatform>();
-                    winPlatform.EndLevel();
-                    break;
-                
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -210,20 +223,20 @@ namespace MainLevel
             {
                 case Platform.Type.Ice:
                     onIcePlat = false;
+                    sr.sprite = !state ? circleSprite : squareSprite;
                     break;
                 
                 case Platform.Type.Hot:
                     onHotPlat = false;
+                    sr.sprite = !state ? circleSprite : squareSprite;
                     break;
                 
                 case Platform.Type.Moving:
-                    MovingPlatform movingPlatform = other.gameObject.GetComponent<MovingPlatform>();
-                    movingPlatform.CanMove = false;
                     onMovingPlat = false;
                     break;
                 
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    break;
             }
         }
     }
