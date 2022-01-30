@@ -20,8 +20,18 @@ namespace MainLevel
         public void LoadNextLevel()
         {
             int nextLevel = PlayerPrefs.GetInt("CurrentLevel") + 1;
-            PlayerPrefs.SetInt("CurrentLevel", nextLevel);
-            SceneManager.LoadScene(nextLevel);
+
+            if (nextLevel == SceneManager.sceneCountInBuildSettings - 1)
+            {
+                nextLevel = 1;
+                PlayerPrefs.SetInt("CurrentLevel", nextLevel);
+                SceneManager.LoadScene(0);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("CurrentLevel", nextLevel);
+                SceneManager.LoadScene(nextLevel);
+            }
         }
     }
 }
