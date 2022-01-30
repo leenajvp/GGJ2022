@@ -11,6 +11,7 @@ namespace MainLevel
     {
         [SerializeField] private Transform startPos;
         [SerializeField] private bool startState;
+        [SerializeField] private GameObject losePanel;
         private Vector3 scale;
         
         [Header("Duality")]
@@ -46,6 +47,9 @@ namespace MainLevel
             if (!circleCol) circleCol = GetComponent<CircleCollider2D>();
             if (!squareCol) squareCol = GetComponent<BoxCollider2D>();
 
+            Time.timeScale = 1;
+            losePanel.SetActive(false);
+
             if (startPos) transform.position = startPos.position;
             ChangeState(startState);
             gameObject.SetActive(true);
@@ -76,10 +80,10 @@ namespace MainLevel
             }
         }
 
-        private void RestartLevel()
+        private void Die()
         {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            Time.timeScale = 0;
+            losePanel.SetActive(true);
         }
 
         // Toggle state
@@ -151,7 +155,7 @@ namespace MainLevel
                 material.color = colour;
             
                 if (colour.a <= 0)
-                    RestartLevel();
+                    Die();
             }
         
             transform.eulerAngles = new Vector3(0, 0, (rollDir == Vector2.right ? -10 : 10));
@@ -187,7 +191,7 @@ namespace MainLevel
                     break;
                 
                 case Platform.Type.Spike:
-                    RestartLevel();
+                    Die();
                     break;
                 
                 case Platform.Type.Bonus:
