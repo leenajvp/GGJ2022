@@ -6,14 +6,14 @@ namespace BonusLevel
 {
     public class InventoryCollection : MonoBehaviour
     {
+        [Header("Text to Update on Collection")]
         [SerializeField] private Text uiText;
         [SerializeField] AudioSource collectSound;
-        public List<Collectables> stars = new List<Collectables>();
-
+        public List<Collectables> collectedStars = new List<Collectables>();
 
         private void Update()
         {
-            uiText.text = stars.Count.ToString();
+            uiText.text = collectedStars.Count.ToString();
             Collect();
         }
 
@@ -28,7 +28,7 @@ namespace BonusLevel
                 if (star != null)
                 {
                     collectSound.Play();
-                    stars.Add(star);
+                    collectedStars.Add(star);
                     col.gameObject.SetActive(false);
                 }
             }

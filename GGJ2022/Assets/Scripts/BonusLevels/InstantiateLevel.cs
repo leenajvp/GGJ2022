@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InstantiateLevel : MonoBehaviour
 {
+    [Header("List of All Created Bonus Levels")]
     [SerializeField] GameObject[] levels;
     private void Awake()
     {

@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using BonusLevel;
+using System.Collections;
+using UnityEngine;
 
 public class RemovePlatform : MonoBehaviour
 {
     [SerializeField] private SwapCharacter player;
+    [Header("Check if Platform is Hot")]
     [SerializeField] private bool hot;
 
     private void Start()

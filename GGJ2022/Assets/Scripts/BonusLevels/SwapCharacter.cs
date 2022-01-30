@@ -5,10 +5,16 @@ namespace BonusLevel
     [RequireComponent(typeof(SpriteRenderer))]
     public class SwapCharacter : MonoBehaviour
     {
+        [Header("Default Character Sprites")]
         [SerializeField] private Sprite ball;
         [SerializeField] private Sprite cube;
+
+        [Header("Game Over Character Sprites")]
+        [SerializeField] private Sprite ballFall;
+        [SerializeField] private Sprite cubeMelt;
         private SpriteRenderer currentSprite;
 
+        [Header("Checking Current State")]
         public bool isBall;
         public bool disabled;
 
@@ -34,7 +40,11 @@ namespace BonusLevel
                 }
             }
 
-            UpdateSprite();
+            if (disabled)
+                PlayerDeadSprites();
+
+            else
+                UpdateSprite();
         }
 
         private void UpdateSprite()
@@ -44,6 +54,15 @@ namespace BonusLevel
 
             else
                 currentSprite.sprite = cube;
+        }
+
+        private void PlayerDeadSprites()
+        {
+            if (isBall)
+                currentSprite.sprite = ballFall;
+
+            else
+                currentSprite.sprite = cubeMelt;
         }
 
     }

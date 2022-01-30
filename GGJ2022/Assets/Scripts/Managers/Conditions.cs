@@ -1,15 +1,19 @@
+using BonusLevel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using BonusLevel;
 
 public class Conditions : MonoBehaviour
 {
+    [Header("Window to show when game ends on any condition")]
     [SerializeField] private GameObject endWindow;
+
     private SwapCharacter checkDisabled;
+    private FollowMouse setWinCondition;
 
     private void Start()
     {
         checkDisabled = GetComponent<SwapCharacter>();
+        setWinCondition = GetComponent<FollowMouse>();
         endWindow.SetActive(false);
     }
 
@@ -27,7 +31,7 @@ public class Conditions : MonoBehaviour
         if (collision.gameObject.tag == "Finish")
         {
             endWindow.SetActive(true);
-            checkDisabled.disabled = true;
+            setWinCondition.levelCompleted = true;
         }
     }
 
