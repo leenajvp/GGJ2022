@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace MainLevel.Platforms
@@ -11,6 +12,7 @@ namespace MainLevel.Platforms
 
         public void LoadBonusLevel()
         {
+            PlayerPrefs.SetInt("BonusLevel", 1);
             SceneManager.LoadScene("Bonus");
         }
     }

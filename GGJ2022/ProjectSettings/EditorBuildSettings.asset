@@ -9,8 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d5ab82b568de2d740a6c622b7a6d1c3c
   - enabled: 1
-    path: Assets/Scenes/Level1Lights.unity
-    guid: 8a8bc050d0516984a890ab0eadf95049
+    path: Assets/Scenes/LeenaLevel1.unity
+    guid: 8f15c8dc36d93a54b86cd44076fa0fd3
+  - enabled: 1
+    path: Assets/Scenes/LizzieLevel2.unity
+    guid: 401971a07afbab244b0ec58e0224d91a
+  - enabled: 1
+    path: Assets/Scenes/LeenaLevel3.unity
+    guid: 44b9ce64a7e8eea44a7748f019a68c8f
+  - enabled: 1
+    path: Assets/Scenes/LizzieLevel4.unity
+    guid: f99dc475962c56d46984d2ad2a002a7b
   - enabled: 1
     path: Assets/Scenes/Bonus.unity
     guid: 7622a06c298328645939de23fcc27871

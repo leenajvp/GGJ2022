@@ -58,8 +58,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  onIcePlat: 0
+  grounded: 0
   circleCol: {fileID: 6153581336167977247}
-  speed: 1
+  speed: 150
   coldCircle: {fileID: 3690371637285736944, guid: 83b60bf1567b2ee4db5e1711136cf9c1, type: 3}
   squareCol: {fileID: 610429906}
   hotSquare: {fileID: -9171686439849695463, guid: 83b60bf1567b2ee4db5e1711136cf9c1, type: 3}

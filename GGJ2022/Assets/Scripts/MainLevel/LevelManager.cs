@@ -7,6 +7,7 @@ namespace MainLevel
     {
         public void RestartLevel()
         {
+            PlayerPrefs.SetInt("BonusLevel", 0);
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
