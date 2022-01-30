@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class SceneMngr : MonoBehaviour
 {
@@ -22,7 +25,14 @@ public class SceneMngr : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void QuitGame() => Application.Quit();
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 
 }
 
