@@ -6,16 +6,26 @@ using System.Collections;
 
 public class BonusResult : MonoBehaviour
 {
+    [Header("Items to Disaple end of game")]
     [SerializeField] private GameObject[] disable;
-    [SerializeField] private Text uiText;
-    [SerializeField] private InventoryCollection inventory;
-    public int inventoryCount;
+
+    [Header("List of Stars in Level")]
+    [SerializeField] private GameObject[] stars;
+    [SerializeField] private Text numberOfStarsText;
+
+    [Header("Final Score Display")]
+    [Tooltip("Total of Collected stars")]
+    [SerializeField] private Text collectedStarsText;
+    [SerializeField] private InventoryCollection player;
+    private int inventoryCount;
 
     private void Start()
     {
-        if (inventory == null)
+        numberOfStarsText.text = ("/") + stars.Length.ToString();
+
+        if (player == null)
         {
-            inventory = FindObjectOfType<InventoryCollection>();
+            player = FindObjectOfType<InventoryCollection>();
         }
     }
 
@@ -29,6 +39,6 @@ public class BonusResult : MonoBehaviour
             }
         }
 
-        uiText.text = inventory.stars.Count.ToString();
+        collectedStarsText.text = player.stars.Count.ToString();
     }
 }
