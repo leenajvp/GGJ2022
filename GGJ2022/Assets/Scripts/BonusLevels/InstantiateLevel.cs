@@ -10,6 +10,6 @@ public class InstantiateLevel : MonoBehaviour
         // This would need bit more set up
         //Instantiate(levels[Random.Range(0, levels.Length)], Vector2.zero, Quaternion.identity);
 
-       // levels[Random.Range(0, levels.Length)].SetActive(true);
+        levels[Random.Range(0, levels.Length)].SetActive(true);
     }
 }
