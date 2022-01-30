@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683005339137752883, guid: 3d3fed8a7eac6d44580962dbc3532fe8, type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 3683005339137752883, guid: 3d3fed8a7eac6d44580962dbc3532fe8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -596,7 +596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1820298342572174163, guid: aa1ad7005c3372e47a2905528acb7af1, type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1820298342572174163, guid: aa1ad7005c3372e47a2905528acb7af1, type: 3}
       propertyPath: m_LocalScale.x
@@ -727,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683005339137752883, guid: 3d3fed8a7eac6d44580962dbc3532fe8, type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 3683005339137752883, guid: 3d3fed8a7eac6d44580962dbc3532fe8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2848,7 +2848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683005339137752883, guid: 3d3fed8a7eac6d44580962dbc3532fe8, type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3683005339137752883, guid: 3d3fed8a7eac6d44580962dbc3532fe8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2974,6 +2974,10 @@ PrefabInstance:
     - target: {fileID: 5850486429916772229, guid: 5721c212c36aab6408a9b26fc1fe39be, type: 3}
       propertyPath: iceSlideSpeed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850486429916772229, guid: 5721c212c36aab6408a9b26fc1fe39be, type: 3}
+      propertyPath: iceLayer.m_Bits
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5721c212c36aab6408a9b26fc1fe39be, type: 3}

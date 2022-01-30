@@ -24,8 +24,9 @@ namespace MainLevel
         [Header("Movement")]
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private LayerMask groundLayer;
-        private bool onMovingPlat, onIcePlat, onHotPlat;
-        private bool grounded;
+        private bool onMovingPlat, onHotPlat;
+        public bool onIcePlat;
+        public bool grounded;
 
         [Header("Circle Behaviour")]
         [SerializeField] private CircleCollider2D circleCol;
@@ -68,30 +69,6 @@ namespace MainLevel
         {
             if (Input.GetKeyDown(KeyCode.Space))
                 ChangeState();
-        }
-
-        private void FixedUpdate()
-        {
-            Debug.DrawRay(transform.position, Vector3.down, Color.green);
-            
-            switch (state)
-            {
-                case false:
-                    grounded = Physics2D.Raycast(transform.position, Vector2.down, circleCol.bounds.extents.y + 0.1f, groundLayer);
-                    CircleBehaviour();
-                    break;
-            
-                case true:
-                    grounded = Physics2D.Raycast(transform.position, Vector2.down, squareCol.bounds.extents.y + 0.1f, groundLayer);
-                    SquareBehaviour();
-                    break;
-            }
-        }
-
-        private void Die()
-        {
-            Time.timeScale = 0;
-            losePanel.SetActive(true);
         }
 
         // Toggle state
@@ -139,6 +116,30 @@ namespace MainLevel
             }
         }
 
+        private void Die()
+        {
+            Time.timeScale = 0;
+            losePanel.SetActive(true);
+        }
+
+        private void FixedUpdate()
+        {
+            //Debug.DrawRay(transform.position, Vector3.down, Color.green);
+            
+            switch (state)
+            {
+                case false:
+                    grounded = Physics2D.Raycast(transform.position, Vector2.down, circleCol.bounds.extents.y + 0.1f, groundLayer);
+                    CircleBehaviour();
+                    break;
+            
+                case true:
+                    grounded = Physics2D.Raycast(transform.position, Vector2.down, squareCol.bounds.extents.y + 0.1f, groundLayer);
+                    SquareBehaviour();
+                    break;
+            }
+        }
+
         private void CircleBehaviour()
         {
             rollDir = rb.velocity.x > 0 ? Vector2.right : Vector2.left;
@@ -148,11 +149,7 @@ namespace MainLevel
         {
             if (onMovingPlat) return;
 
-            if (onIcePlat)
-            {
-                rb.velocity = rollDir * iceSlideSpeed;
-                return;
-            }
+            if (onIcePlat) rb.velocity = rollDir * iceSlideSpeed;
 
             if (onHotPlat)
             {
@@ -168,6 +165,7 @@ namespace MainLevel
             }
         
             transform.eulerAngles = new Vector3(0, 0, (rollDir == Vector2.right ? -10 : 10));
+
             if (grounded)
                 rb.constraints = slide ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezePositionX;
             else if (!grounded)
