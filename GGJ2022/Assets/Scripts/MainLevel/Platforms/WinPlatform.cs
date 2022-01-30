@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace MainLevel.Platforms
@@ -16,6 +15,8 @@ namespace MainLevel.Platforms
         public void EndLevel()
         {
             Time.timeScale = 0;
+            int nextLevel = PlayerPrefs.GetInt("CurrentLevel") + 1;
+            PlayerPrefs.SetInt("CurrentLevel", nextLevel);
             winPanel.SetActive(true);
         }
     }

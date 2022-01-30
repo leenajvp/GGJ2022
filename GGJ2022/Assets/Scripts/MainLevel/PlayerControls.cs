@@ -9,7 +9,7 @@ namespace MainLevel
     [RequireComponent(typeof(CircleCollider2D), typeof(BoxCollider2D))]
     public class PlayerControls : MonoBehaviour
     {
-        [SerializeField] private Transform startPos;
+        [SerializeField] private Transform startPos, bonusStartPos;
         [SerializeField] private bool startState;
         [SerializeField] private GameObject losePanel;
         private Vector3 scale;
@@ -29,6 +29,7 @@ namespace MainLevel
 
         [Header("Circle Behaviour")]
         [SerializeField] private CircleCollider2D circleCol;
+        [SerializeField] private float speed = 1;
         [SerializeField] private Sprite coldCircle;
         private Vector2 rollDir = Vector2.right;
     
@@ -50,7 +51,14 @@ namespace MainLevel
             Time.timeScale = 1;
             losePanel.SetActive(false);
 
-            if (startPos) transform.position = startPos.position;
+            // If the player has come from the bonus level, move them to that position
+            if (PlayerPrefs.GetInt("BonusLevel") == 1)
+            {
+                transform.position = bonusStartPos.position;
+                PlayerPrefs.SetInt("BonusLevel", 0);
+            }
+            else transform.position = startPos.position;
+            
             ChangeState(startState);
             gameObject.SetActive(true);
             scale = transform.localScale;
@@ -96,6 +104,7 @@ namespace MainLevel
             if (!state)
             {
                 rb.constraints = RigidbodyConstraints2D.None;
+                rb.AddForce(rollDir * speed);
                 circleCol.enabled = true;
                 squareCol.enabled = false;
                 rb.velocity = rollDir;
@@ -132,7 +141,7 @@ namespace MainLevel
 
         private void CircleBehaviour()
         {
-            rollDir = rb.velocity.x > 0 ? Vector2.right : Vector2.left ;
+            rollDir = rb.velocity.x > 0 ? Vector2.right : Vector2.left;
         }
 
         private void SquareBehaviour()
