@@ -9,7 +9,10 @@ namespace MainLevel
     [RequireComponent(typeof(CircleCollider2D), typeof(BoxCollider2D))]
     public class PlayerControls : MonoBehaviour
     {
-        [SerializeField] private Transform start;
+        [SerializeField] private Transform startPos, bonusStartPos;
+        [SerializeField] private bool startState;
+        [SerializeField] private GameObject losePanel;
+        private Vector3 scale;
         
         [Header("Duality")]
         [SerializeField] private SpriteRenderer sr;
@@ -21,11 +24,13 @@ namespace MainLevel
         [Header("Movement")]
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private LayerMask groundLayer;
-        private bool onMovingPlat, onIcePlat, onHotPlat;
+        private bool onMovingPlat, onHotPlat;
+        public bool onIcePlat;
         public bool grounded;
 
         [Header("Circle Behaviour")]
         [SerializeField] private CircleCollider2D circleCol;
+        [SerializeField] private float speed = 1;
         [SerializeField] private Sprite coldCircle;
         private Vector2 rollDir = Vector2.right;
     
@@ -44,39 +49,26 @@ namespace MainLevel
             if (!circleCol) circleCol = GetComponent<CircleCollider2D>();
             if (!squareCol) squareCol = GetComponent<BoxCollider2D>();
 
-            if (start) transform.position = start.position;
-            ChangeState(false);
+            Time.timeScale = 1;
+            losePanel.SetActive(false);
+
+            // If the player has come from the bonus level, move them to that position
+            if (PlayerPrefs.GetInt("BonusLevel") == 1)
+            {
+                transform.position = bonusStartPos.position;
+                PlayerPrefs.SetInt("BonusLevel", 0);
+            }
+            else transform.position = startPos.position;
+            
+            ChangeState(startState);
             gameObject.SetActive(true);
+            scale = transform.localScale;
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
                 ChangeState();
-        }
-
-        private void FixedUpdate()
-        {
-            Debug.DrawRay(transform.position, Vector3.down, Color.green);
-            
-            switch (state)
-            {
-                case false:
-                    grounded = Physics2D.Raycast(transform.position, Vector2.down, circleCol.bounds.extents.y + 0.1f, groundLayer);
-                    CircleBehaviour();
-                    break;
-            
-                case true:
-                    grounded = Physics2D.Raycast(transform.position, Vector2.down, squareCol.bounds.extents.y + 0.1f, groundLayer);
-                    SquareBehaviour();
-                    break;
-            }
-        }
-
-        private void RestartLevel()
-        {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
         }
 
         // Toggle state
@@ -89,6 +81,7 @@ namespace MainLevel
             if (!state)
             {
                 rb.constraints = RigidbodyConstraints2D.None;
+                rb.AddForce(rollDir * speed);
                 circleCol.enabled = true;
                 squareCol.enabled = false;
                 rb.velocity = rollDir;
@@ -123,20 +116,40 @@ namespace MainLevel
             }
         }
 
+        private void Die()
+        {
+            Time.timeScale = 0;
+            losePanel.SetActive(true);
+        }
+
+        private void FixedUpdate()
+        {
+            //Debug.DrawRay(transform.position, Vector3.down, Color.green);
+            
+            switch (state)
+            {
+                case false:
+                    grounded = Physics2D.Raycast(transform.position, Vector2.down, circleCol.bounds.extents.y + 0.1f, groundLayer);
+                    CircleBehaviour();
+                    break;
+            
+                case true:
+                    grounded = Physics2D.Raycast(transform.position, Vector2.down, squareCol.bounds.extents.y + 0.1f, groundLayer);
+                    SquareBehaviour();
+                    break;
+            }
+        }
+
         private void CircleBehaviour()
         {
-            rollDir = rb.velocity.x > 0 ? Vector2.right : Vector2.left ;
+            rollDir = rb.velocity.x > 0 ? Vector2.right : Vector2.left;
         }
 
         private void SquareBehaviour()
         {
             if (onMovingPlat) return;
 
-            if (onIcePlat)
-            {
-                rb.velocity = rollDir * iceSlideSpeed;
-                return;
-            }
+            if (onIcePlat) rb.velocity = rollDir * iceSlideSpeed;
 
             if (onHotPlat)
             {
@@ -148,10 +161,11 @@ namespace MainLevel
                 material.color = colour;
             
                 if (colour.a <= 0)
-                    RestartLevel();
+                    Die();
             }
         
             transform.eulerAngles = new Vector3(0, 0, (rollDir == Vector2.right ? -10 : 10));
+
             if (grounded)
                 rb.constraints = slide ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezePositionX;
             else if (!grounded)
@@ -184,7 +198,7 @@ namespace MainLevel
                     break;
                 
                 case Platform.Type.Spike:
-                    RestartLevel();
+                    Die();
                     break;
                 
                 case Platform.Type.Bonus:
@@ -210,6 +224,10 @@ namespace MainLevel
                 case Platform.Type.Ice:
                     IcePlatform icePlatform = other.gameObject.GetComponent<IcePlatform>();
                     if (!state) icePlatform.Melt();
+                    break;
+                
+                case Platform.Type.Moving:
+                    scale = scale;
                     break;
             }
         }

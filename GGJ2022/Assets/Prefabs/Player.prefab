@@ -47,7 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2e95aa4a8857e4ea782a8d453e23e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: {fileID: 0}
+  startPos: {fileID: 0}
+  bonusStartPos: {fileID: 0}
+  startState: 0
+  losePanel: {fileID: 0}
   sr: {fileID: 5850486429916772231}
   circleSprite: {fileID: 8755591262435691780, guid: 4795e1871621feb409f1ac5d031bdc3b, type: 3}
   squareSprite: {fileID: 5546671543968653177, guid: 4795e1871621feb409f1ac5d031bdc3b, type: 3}
@@ -55,11 +58,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  onIcePlat: 0
   grounded: 0
   circleCol: {fileID: 6153581336167977247}
-  coldCircle: {fileID: 21300000, guid: e41cdba76b4c6b8459f0968d0f434e2e, type: 3}
+  speed: 150
+  coldCircle: {fileID: 3690371637285736944, guid: 83b60bf1567b2ee4db5e1711136cf9c1, type: 3}
   squareCol: {fileID: 610429906}
-  hotSquare: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  hotSquare: {fileID: -9171686439849695463, guid: 83b60bf1567b2ee4db5e1711136cf9c1, type: 3}
   slide: 1
   iceSlideSpeed: 1
   meltSpeed: 1
