@@ -9,10 +9,6 @@ public class BonusResult : MonoBehaviour
     [Header("Items to Disaple end of game")]
     [SerializeField] private GameObject[] disable;
 
-    [Header("List of Stars in Level")]
-    [SerializeField] private GameObject[] stars;
-    [SerializeField] private Text numberOfStarsText;
-
     [Header("Final Score Display")]
     [Tooltip("Total of Collected stars")]
     [SerializeField] private Text collectedStarsText;
@@ -21,8 +17,6 @@ public class BonusResult : MonoBehaviour
 
     private void Start()
     {
-        numberOfStarsText.text = ("/") + stars.Length.ToString();
-
         if (player == null)
         {
             player = FindObjectOfType<InventoryCollection>();
@@ -39,6 +33,6 @@ public class BonusResult : MonoBehaviour
             }
         }
 
-        collectedStarsText.text = player.stars.Count.ToString();
+        collectedStarsText.text = player.collectedStars.Count.ToString();
     }
 }

@@ -5,8 +5,13 @@ namespace BonusLevel
     [RequireComponent(typeof(SwapCharacter))]
     public class FollowMouse : MonoBehaviour
     {
+        [Header("Text to Display Before Start")]
         [SerializeField] private GameObject introText;
+        [Header("Player's Mouse Follow Speed")]
         [SerializeField] private float speed;
+        [Header("Check if Level Completed")]
+        public bool levelCompleted;
+
         private bool started;
         private Vector3 mousePos;
         private SwapCharacter checkDisabled;
@@ -16,6 +21,7 @@ namespace BonusLevel
             introText.SetActive(true);
             started = false;
             checkDisabled = GetComponent<SwapCharacter>();
+            levelCompleted = false;
         }
 
         void Update()
@@ -25,9 +31,9 @@ namespace BonusLevel
                 started = true;
                 introText.SetActive(false);
             }
-                
 
-            if (!checkDisabled.disabled)
+
+            if (!checkDisabled.disabled && !levelCompleted)
                 FollowMouseZ();
         }
 

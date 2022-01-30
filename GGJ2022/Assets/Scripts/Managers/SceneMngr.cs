@@ -23,6 +23,6 @@ public class SceneMngr : MonoBehaviour
     }
 
     public void QuitGame() => Application.Quit();
-        
+
 }
 
