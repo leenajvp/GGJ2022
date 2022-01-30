@@ -15,5 +15,12 @@ namespace MainLevel
         {
             SceneManager.LoadScene("MainMenu");
         }
+
+        public void LoadNextLevel()
+        {
+            int nextLevel = PlayerPrefs.GetInt("CurrentLevel") + 1;
+            PlayerPrefs.SetInt("CurrentLevel", nextLevel);
+            SceneManager.LoadScene(nextLevel);
+        }
     }
 }

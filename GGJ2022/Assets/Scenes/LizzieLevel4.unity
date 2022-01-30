@@ -429,6 +429,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 650293961}
     m_Modifications:
+    - target: {fileID: 2642868773459397677, guid: 16d288ab58525e443a6d925e9b723801, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 605141768}
+    - target: {fileID: 2642868773459397677, guid: 16d288ab58525e443a6d925e9b723801, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadNextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2642868773459397677, guid: 16d288ab58525e443a6d925e9b723801, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainLevel.LevelManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2642868774844946017, guid: 16d288ab58525e443a6d925e9b723801, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
