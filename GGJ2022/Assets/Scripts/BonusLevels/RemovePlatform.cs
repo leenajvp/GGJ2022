@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RemovePlatform : MonoBehaviour
 {
-    [SerializeField] private SwapCharacter player;
+    [SerializeField] protected SwapCharacter player;
     [Header("Check if Platform is Hot")]
-    [SerializeField] private bool hot;
+    [SerializeField] protected bool hot;
 
     private void Start()
     {
