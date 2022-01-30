@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d5ab82b568de2d740a6c622b7a6d1c3c
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 6995d52a1535a344288f9028ffdb204f
+  - enabled: 1
     path: Assets/Scenes/LeenaLevel1.unity
     guid: 8f15c8dc36d93a54b86cd44076fa0fd3
   - enabled: 1
