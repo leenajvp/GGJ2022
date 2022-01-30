@@ -209,6 +209,10 @@ namespace MainLevel
                     other.gameObject.GetComponent<WinPlatform>().EndLevel();
                     break;
                 
+                case Platform.Type.Death:
+                    Die();
+                    break;
+                
                 default:
                     break;
             }
