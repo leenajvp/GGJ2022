@@ -38,6 +38,12 @@ TextureImporter:
   - first:
       213: 9172541465896140817
     second: redX
+  - first:
+      213: -6870057557235957817
+    second: soundSprite
+  - first:
+      213: 5180091439975065079
+    second: Spritesheet2_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -402,7 +408,7 @@ TextureImporter:
         width: 225
         height: 220
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -410,6 +416,48 @@ TextureImporter:
       bones: []
       spriteID: 110c7427dd96b4f70800000000000000
       internalID: 9172541465896140817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: soundSprite
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 1018
+        width: 224
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cf76720d07a8a0a0800000000000000
+      internalID: -6870057557235957817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet2_13
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 1287
+        width: 272
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f561c728b163e740800000000000000
+      internalID: 5180091439975065079
       vertices: []
       indices: 
       edges: []

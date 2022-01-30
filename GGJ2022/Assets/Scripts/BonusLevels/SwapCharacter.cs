@@ -12,20 +12,20 @@ namespace BonusLevel
         [Header("Game Over Character Sprites")]
         [SerializeField] private Sprite ballFall;
         [SerializeField] private Sprite cubeMelt;
-        private SpriteRenderer currentSprite;
+        protected SpriteRenderer currentSprite;
 
         [Header("Checking Current State")]
         public bool isBall;
         public bool disabled;
 
-        private void Start()
+        protected virtual void Start()
         {
             currentSprite = GetComponent<SpriteRenderer>();
             isBall = true;
             disabled = false;
         }
 
-        void Update()
+        protected virtual void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
