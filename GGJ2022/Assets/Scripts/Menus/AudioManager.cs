@@ -19,31 +19,37 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        audioToggle.isOn = true;
         float currentSFX = PlayerPrefs.GetFloat("sfxVol");
         float currentMusic = PlayerPrefs.GetFloat("mVol");
 
         musicSlider.value = currentMusic;
         sfxSlider.value = currentSFX;
 
-        if (PlayerPrefs.GetInt("Audio") == 1)
-            audioToggle.isOn = true;
 
-        else
+        if (PlayerPrefs.GetInt("SoundSettings") == 0)
+        {
+            audioToggle.isOn = true;
+        }
+
+        else if (PlayerPrefs.GetInt("SoundSettings") == 1)
+        {
             audioToggle.isOn = false;
+        }
     }
 
     private void Update()
     {
-        if (audioToggle.isOn)
+        if (audioToggle.isOn == true)
         {
+            PlayerPrefs.SetInt("SoundSettings", 0);
             AudioListener.volume = 1;
-            PlayerPrefs.SetInt("Audio", 1);
         }
 
-        else
+        else if (audioToggle.isOn == false)
         {
+            PlayerPrefs.SetInt("SoundSettings", 1);
             AudioListener.volume = 0;
-            PlayerPrefs.SetInt("Audio", 0);
         }
     }
 

@@ -6,6 +6,14 @@ using UnityEditor;
 
 public class SceneMngr : MonoBehaviour
 {
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
     public void NewGame()
     {
         Time.timeScale = 1;

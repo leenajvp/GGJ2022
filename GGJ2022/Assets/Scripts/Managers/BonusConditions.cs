@@ -2,7 +2,7 @@ using BonusLevel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Conditions : MonoBehaviour
+public class BonusConditions : MonoBehaviour
 {
     [Header("Window to show when game ends on any condition")]
     [SerializeField] private GameObject endWindow;
@@ -24,7 +24,6 @@ public class Conditions : MonoBehaviour
             endWindow.SetActive(true);
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
