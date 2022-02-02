@@ -1,5 +1,6 @@
 # GGJ2022
 Group submission for Global Game Jam 2022
+The completed game is available to play in [itch.io](https://lizziebriggs.itch.io/dualswitch).
 
 ### Credits:
 [Lizzie Briggs](https://github.com/lizziebriggs), Programming
